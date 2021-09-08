@@ -39,6 +39,15 @@ const mealGenerator = {
     },
     addDish(dish) {
         this._meal.dishes.push(dish);
+    },
+
+    //Use getRandom methods to generate user message
+    generateMessage() {
+        const type = this.getRandomType;
+        const location = this.getRandomLocation;
+        const dish = this.getRandomDish;
+
+        return `Your random meal will be ${type}!\nIt will come from ${location}.\nYou will be eating ${dish}!`;
     }
 
 };
