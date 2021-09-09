@@ -1,54 +1,70 @@
 // Object that creates and stores a random meal
 const mealGenerator = {
-    _meal: {
-        types: ['breakfast', 'brunch', 'lunch', 'dinner'], 
-        locations: [], // name of restaurant or at home 
-        dishes: []  // food options
-    },
+    
+    _types: ['breakfast', 'brunch', 'lunch', 'dinner'], 
+    _locations: [], // name of restaurant or at home 
+    _dishes: [],  // food options
+    
 
     // getters and setters
     get types() { 
-        return this._meal.types; 
+        return this._types; 
     },
-    get locations() { return this._meal.locations; },
-    get dishes() { return this._meal.dishes; },
-    set types(typesArr) { this._meal.types = typesArr; },
-    set locations(locationsArr) { this._meal.locations = locationsArr; },
-    set dishes(dishesArr) { this._meal.dishes = dishesArr; },
+    get locations() { return this._locations; },
+    get dishes() { return this._dishes; },
+    set types(typesArr) { this._types = typesArr; },
+    set locations(locationsArr) { this._locations = locationsArr; },
+    set dishes(dishesArr) { this._dishes = dishesArr; },
 
     //Return random items in each _meal array
     getRandomType() {
-        const randNum = Math.floor(Math.random() * this._meal.types.length);
-        return this._meal.types[randNum]; 
+        const randNum = Math.floor(Math.random() * this._types.length);
+        return this._types[randNum]; 
     },
     getRandomLocation() {
-        const randNum = Math.floor(Math.random() * this._meal.locations.length);
-        return this._meal.locations[randNum]; 
+        const randNum = Math.floor(Math.random() * this._locations.length);
+        return this._locations[randNum]; 
     },
     getRandomDish() {
-        const randNum = Math.floor(Math.random() * this._meal.dishes.length);
-        return this._meal.dishes[randNum]; 
+        const randNum = Math.floor(Math.random() * this._dishes.length);
+        return this._dishes[randNum]; 
     },
 
     //Add new items to arrays
     addType(type) {
-        this._meal.types.push(type);
+        this._types.push(type);
     },
     addLocation(location) {
-        this._meal.locations.push(location);
+        this._locations.push(location);
     },
     addDish(dish) {
-        this._meal.dishes.push(dish);
+        this._dishes.push(dish);
     },
 
     //Use getRandom methods to generate user message
     generateMessage() {
-        const type = this.getRandomType;
-        const location = this.getRandomLocation;
-        const dish = this.getRandomDish;
+        const type = this.getRandomType();
+        const location = this.getRandomLocation();
+        const dish = this.getRandomDish();
 
         return `Your random meal will be ${type}!\nIt will come from ${location}.\nYou will be eating ${dish}!`;
     }
 
 };
 
+mealGenerator.addLocation('your kitchen');
+mealGenerator.addLocation('Applebee\'s');
+mealGenerator.addLocation('TGI Friday\'s');
+mealGenerator.addLocation('McDonald\'s');
+
+mealGenerator.addDish('pancakes');
+mealGenerator.addDish('tacos');
+mealGenerator.addDish('eggs and bacon');
+mealGenerator.addDish('a ham sandwich');
+mealGenerator.addDish('meatloaf');
+mealGenerator.addDish('spaghetti');
+mealGenerator.addDish('fried chicken');
+mealGenerator.addDish('pizza');
+
+
+console.log(mealGenerator.generateMessage())
